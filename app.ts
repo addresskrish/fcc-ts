@@ -6,12 +6,12 @@ const c: boolean = true;
 
 /* Function types */
 
-function add(a: number, b: number): number {
-  return a + b;
+function add(x: number, y: number): number {
+  return x + y;
 };
 
-const sub = (a: number, b: number): number => {
-  return a - b;
+const sub = (x: number, y: number): number => {
+  return x - y;
 };
 
 const handleError = (errmsg: string): /*void*/ never => {
@@ -41,9 +41,101 @@ const subSum: number = sub(2, 2);
 /* Object types */
 
 const User = {
-  name:"krish",
+  userName:"krish",
   age: 20,
   isAlive: true
 };
 
-function userInfo({name: string, isAlive: boolean}) {}; 
+/* Type aliases */
+type Pizza = {
+  readonly _id: number,
+  name: string,
+  size: string,
+  price: number,
+  isAvailable?: boolean
+}
+
+const pizzaDetails = (pizza: Pizza): Pizza => {
+  return pizza
+}
+
+const pizzaOrder = pizzaDetails ({
+  _id: 121,
+  name: "Margherita",
+  size: "Medium",
+  price: 245
+})
+
+console.log(pizzaOrder)
+
+/* Array */
+
+const superheros: string[] = ["krish", "robin"]
+const powers: Array<number> = []
+
+type Aura = {
+  auraPoints: number,
+  exp: number
+}
+
+const aura: Aura[] = [{auraPoints: 1/0, exp: 1/0}]
+
+superheros.push("batman");
+powers.push(1/0, 100, 500)
+aura.push({
+  auraPoints: 100,
+  exp: 100
+})
+console.log(superheros);
+console.log(powers);
+console.log(aura);
+
+/**
+ * function hello(value: number[]): void {} or function hello(value: Array<number>): void {}
+ * function hello(value: Readonlynumber[]): void {} or function hello(value: ReadonlyArray<number>): void {}
+ * 
+ * const a = [1, 2, 3]
+ * 
+ * hello(a)
+ * 
+ */
+
+/* Union types */
+
+let score: number | string | boolean = 22;
+score = "22";
+score = true;
+
+const details = (id: number | string): void => {
+  typeof id === "string" ? console.log(`id is str: ${id.toUpperCase()}`) : console.log(`id in num: ${id + 2}`);
+}
+
+details("krish");
+details(4);
+
+/* full array is either number or string */
+/* const data: number[] | string[] = [1, 2, 3] or ["1", "2", "3"] */ 
+
+/* for both we use parenthesis */
+const data: (number | string)[] = ["1", "2", 3] /* let's go 🎉 */
+
+/* some special diclaration */
+let pi:3.14 = 3.14
+let seatAllowtment: "aisle" | "middle" | "window" = "aisle";
+/* seatAllowtment = "crew"; ❌ */ 
+
+/* Tuples types */
+/* for order of array for specific  api calls use this */
+/* well we can overider the tuples using push, pop so its very buggy */
+let tUser: [string,  number, boolean];
+tUser = ["krish", 121, true]
+
+
+/* Enums types */
+enum seatChoice {
+  AISLE,
+  MIDDLE,
+  WINDOW
+}
+
+const kcSeat = seatChoice.WINDOW
