@@ -139,3 +139,27 @@ enum seatChoice {
 }
 
 const kcSeat = seatChoice.WINDOW
+
+/* Interfaces types */
+
+interface Admin {
+  readonly _id: number,
+  name: string,
+  email: string,
+  googleId?: string,
+  startTrail(): string
+  // startTrail: () => string
+  getCoupon(couponname: string): number
+}
+
+const krish: Admin = 
+{ _id: 1, 
+  name: "krish", 
+  email: "hello@krish.com",
+  startTrail: () => {
+    return "login sucessfully!"
+  },
+  getCoupon: (name: "krish100") => {
+    return 1
+  }
+}
