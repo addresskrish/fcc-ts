@@ -68,7 +68,7 @@ const pizzaOrder = pizzaDetails ({
 
 console.log(pizzaOrder)
 
-/* Array */
+/* Array types */
 
 const superheros: string[] = ["krish", "robin"]
 const powers: Array<number> = []
@@ -163,3 +163,4 @@ const krish: Admin =
     return 1
   }
 }
+
