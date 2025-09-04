@@ -132,13 +132,13 @@ tUser = ["krish", 121, true]
 
 
 /* Enums types */
-enum seatChoice {
+/* enum seatChoice {
   AISLE,
   MIDDLE,
   WINDOW
 }
 
-const kcSeat = seatChoice.WINDOW
+const kcSeat = seatChoice.WINDOW */
 
 /* Interfaces types */
 
@@ -164,3 +164,39 @@ const krish: Admin =
   }
 }
 
+interface Nothing {
+  name: string,
+  sales: number
+}
+
+interface CMF extends Nothing {
+  newProducts: string[]
+}
+
+const companyDetails: Nothing = {
+  name: "Nothing",
+  sales: 1000000
+}
+
+const newCompanyDetails: CMF = {
+  name: "CMF",
+  sales: 10000,
+  newProducts: ["Earpoads", "Nackband"]
+}
+
+/* Generics types */
+function identity<Type>(val: Type): Type {
+  return val
+}
+
+interface foundersList {
+  name: string,
+  rank: number
+}
+
+const list = identity<foundersList>({
+  name: "elon musk",
+  rank: 0o1
+})
+
+console.log(list)
